@@ -1,43 +1,23 @@
 import React from 'react'
+import { iconUrlFromCode } from './script'
 
-const Forecast = ({title}) => {
+const Forecast = ({title, items}) => {
   return (
     <div>
         <div style={{display:"flex"}}>
             <p>{title}</p>
         </div>
         <hr />
-        <div style={{display:"flex", alignItems:"center",justifyContent:"center"}}>
-
-            <div  style={{display:"flex", flexDirection:"column" ,alignItems:"center",justifyContent:"center"}}>
-                <p>04:30 pm</p>
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-                <p>22*</p>
-            </div>
-
-            <div  style={{display:"flex", flexDirection:"column" ,alignItems:"center",justifyContent:"center"}}>
-                <p>04:30 pm</p>
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-                <p>22*</p>
-            </div>
-
-            <div  style={{display:"flex", flexDirection:"column" ,alignItems:"center",justifyContent:"center"}}>
-                <p>04:30 pm</p>
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-                <p>22*</p>
-            </div>
-
-            <div  style={{display:"flex", flexDirection:"column" ,alignItems:"center",justifyContent:"center"}}>
-                <p>04:30 pm</p>
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-                <p>22*</p>
-            </div>
-
-            <div  style={{display:"flex", flexDirection:"column" ,alignItems:"center",justifyContent:"center"}}>
-                <p>04:30 pm</p>
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-                <p>22*</p>
-            </div>
+        <div style={{display:"flex", alignItems:"center",justifyContent:"center",overflowX:'auto'}}>
+            {items.map((item) =>{ 
+                return(  
+                    <div  style={{display:"flex", flexDirection:"column" ,alignItems:"center",justifyContent:"center"}}>
+                        <p>{item. title}</p>
+                        <img src={iconUrlFromCode(item.icon)} alt="" />
+                        <p>{`${Math.floor(item.temp)}°`}</p>
+                    </div>  
+                )
+            })}
         </div>
     </div>
   )

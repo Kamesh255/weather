@@ -12,6 +12,7 @@ const Home = () => {
 
     const [query, setQuery] = useState({q:"seoni"})
     const [units, setUnits] = useState('metric')
+    const [city, setCity] =useState('')
     const [weather, setWeather] = useState(null)
 
     useEffect(()=>{ 
@@ -24,26 +25,48 @@ const Home = () => {
         fetchData()
     },[query, units])
 
+    const handleSearchClick =()=>{
+        if(city !== '') {
+            setQuery({q: city})
+        }
+    }
+
+    const handleLocationClick=()=>{
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition((position)=>{
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude
+                setQuery({lat,lon})
+            })
+        }
+    }
+
    console.log(weather)
   return (
     <div className='container'>
         <div className='search'>
             <div>
-                <AiTwotoneEnvironment className='location' />
+                <AiTwotoneEnvironment className='location' onClick={handleLocationClick} />
             </div>
             <div>
-                <input style={{border:"none", fontSize:"20px", width:"full", height:"100%"}} type="text" placeholder='Search your city' />
+                <input style={{border:"none", fontSize:"20px", width:"full", height:"100%"}} 
+                type="text"
+                placeholder='Search your city'
+                value={city}
+                onChange={(e)=> setCity(e.currentTarget.value)}
+                />
+                
             </div>
             <div>
-                <BsSearch />
+                <BsSearch onClick={handleSearchClick}/>
             </div> 
         </div>
         {weather && (
             <div>
                 <TimeAndLocation weather={weather}/>
                 <Temperature weather={weather}/>
-                <Forecast title="HOURLY FORECAST" />
-                <Forecast title="DAILY FORECAST" />
+                <Forecast title="HOURLY FORECAST" items={weather.hourly} />
+                <Forecast title="DAILY FORECAST" items={weather.daily} />
             </div>
         )}
     </div>

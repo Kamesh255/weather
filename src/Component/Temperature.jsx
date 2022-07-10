@@ -16,15 +16,15 @@ const Temperature = ({weather:{details,icon,temp,  temp_min, temp_max, sunrise, 
         </div>
         <div className='temprature'>
             <img  src= {iconUrlFromCode(icon)} alt="" />
-            <p>{`${temp}*`}</p>
-            <div>
+            <p>{`${Math.floor(temp)}°`}</p>
+            <div style={{textAlign:"left"}}>
                 <div>
                     <FaTemperatureLow />
-                    Real feal : <span>{`${feels_like}*`}</span>
+                    Real feal : <span>{`${feels_like}°`}</span>
                 </div>
                 <div>
                     <WiHumidity />
-                    Humidity : <span>{`${humidity}*`}</span>
+                    Humidity : <span>{`${humidity}°`}</span>
                 </div>
                 <div>
                     <BiWind />
@@ -35,19 +35,19 @@ const Temperature = ({weather:{details,icon,temp,  temp_min, temp_max, sunrise, 
 
         <div className='sunset'>
             <FiSunrise />
-            <p>Rise: <span>{formatToLocalTime(sunrise, timezone,"hh:mm a")}</span></p>
+            <p>Rise : <span>{formatToLocalTime(sunrise, timezone,"hh:mm a")}</span></p>
             <p style={{marginLeft:"10px"}}> | </p>
 
             <FiSunset style={{marginLeft:"10px"}} />
-            <p> Set: <span>{formatToLocalTime(sunset, timezone,"hh:mm a")}</span></p>
+            <p> Set : <span>{formatToLocalTime(sunset, timezone,"hh:mm a")}</span></p>
             <p style={{marginLeft:"10px"}}>|</p>
 
             <AiOutlineArrowUp style={{marginLeft:"10px"}} />
-            <p>High : <span>{`${temp_max}*`}</span></p>
+            <p>High : <span>{`${Math.floor(temp_max)}°`}</span></p>
             <p style={{marginLeft:"10px"}}>|</p>
 
             <AiOutlineArrowDown style={{marginLeft:"10px"}} />
-            <p>Low : <span>{`${temp_min}*`}</span></p>
+            <p>Low : <span>{`${Math.floor(temp_min)}°`}</span></p>
             
         </div>
     </div>
