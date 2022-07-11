@@ -4,11 +4,7 @@ import { iconUrlFromCode } from "./script";
 const Forecast = ({ title, items }) => { 
    
   return (
-    <div>
-        <br />
-      <div style={{ display: "flex" }}>
-        {/* <p style={{fontWeight:"bold"}}>{title}</p> */}
-      </div> 
+    <div> 
       <div
         style={{
           display: "flex",
@@ -32,11 +28,13 @@ const Forecast = ({ title, items }) => {
             >
               <p>{item.title}</p>
               <p>{`${Math.floor(item.temp)}°C`}</p>
-              <img src={iconUrlFromCode(item.icon)} alt="" />
+              <img style={{width:'90px'}} src={iconUrlFromCode(item.icon)} alt="" />
               <p>{item.details}</p>
+              <br />
             </div>
           );
         })}
+      <br />
       </div>
     </div>
   );

@@ -4,52 +4,43 @@ import { FaTemperatureLow } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
 import { BiWind } from "react-icons/bi";
 import { FiSunrise, FiSunset } from "react-icons/fi";
-import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 import { formatToLocalTime, iconUrlFromCode } from "./script";
 import Hourly from "./Hourly";
+import TimeAndLocation from "./TimeAndLocation";
 
 const Temperature = ({
   weather: {
     details,
     icon,
     temp,
-    temp_min,
-    temp_max,
     sunrise,
     sunset,
     speed,
     humidity,
     feels_like,
     timezone,
-  },items
+  },items,location
 }) => {
   return (
-    <div>
-      <div>
-        <p style={{color:"steelblue", fontWeight:'bolder'}} >{details}</p>
-      </div>
+    <div> 
       <div className="temprature">
-        <img src={iconUrlFromCode(icon)} alt="" />
-        <p style={{fontSize:"30px",fontWeight:"bold"}}>{`${Math.floor(temp)}°C`}</p>
+
+        <p style={{fontSize:"40px",fontWeight:"bold"}}>{`${Math.floor(temp)}°C`}</p>
+
+        <div> 
+          <img style={{width:'90px'}} src={iconUrlFromCode(icon)} alt="" />
+          <p style={{color:"steelblue", fontWeight:'500',margin:"-25px 0 0 0"}} >{details}</p>
+        </div> 
+
         <div style={{ textAlign: "left" }}>
-          <div>
-            <FaTemperatureLow color="red" />
-            Real feal : <span>{`${feels_like}°C`}</span>
-          </div>
-          <div>
-            <WiHumidity color="blue" size={20} style={{margin:" 2px 2px 0px -4px"}} />
-            Humidity : <span>{`${humidity}%`}</span>
-          </div>
-          <div>
-            <BiWind color="#6DE5F7" />
-            Wind : <span>{`${speed}km/h`}</span>
-          </div>
+          <TimeAndLocation location={location}/> 
         </div>
-      </div>
 
-      <Hourly items ={items} />
+      </div> 
 
-      <br /> 
+      <Hourly items ={items} />  
+
+      <br />  
 
       <div className="sunset">
         <FiSunrise color="#EC6E4C" size={30} />
@@ -65,6 +56,20 @@ const Temperature = ({
         </p> 
       </div>
       <br />
+       <div style={{display:'flex',flexDirection:'row',flexWrap:'wrap',gap:'15px',alignItems:'center',justifyContent:'space-between',padding:'5px'}}>
+          <div> 
+            <FaTemperatureLow color="red" />
+            Real feal : <span>{`${feels_like}°C`}</span>
+          </div>
+          <div>
+            <WiHumidity color="blue"  />
+            Humidity : <span>{`${humidity}%`}</span>
+          </div>
+          <div>
+            <BiWind color="#6DE5F7" />
+            Wind : <span>{`${speed}km/h`}</span>
+          </div>
+      </div>
       <br />
     </div>
   );

@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./style/Home.css";
 import { BsSearch } from "react-icons/bs";
 import { AiTwotoneEnvironment } from "react-icons/ai";
-import TimeAndLocation from "./TimeAndLocation";
 import Temperature from "./Temperature";
 import Forecast from "./Forecast";
 import getFormattedWeatherData from "./script";
-import Hourly from "./Hourly";
 
 const Home = () => {
   const [query, setQuery] = useState({ q: "indore" });
@@ -39,7 +37,7 @@ const Home = () => {
     }
   };
 
-  //    console.log(weather)
+ 
   return (
     <div className="container">
       <div className="search">
@@ -69,11 +67,10 @@ const Home = () => {
       <br />
       {weather && (
         <div>
-            <div className="timeAndGraf"> 
-                <TimeAndLocation weather={weather} />
-                <Temperature weather={weather} items={weather.hourly}/> 
-            </div>
           <Forecast title="DAILY FORECAST" items={weather.daily} />
+            <div className="timeAndGraf">  
+                <Temperature weather={weather} items={weather.hourly} location={weather}/> 
+            </div>
         </div>
       )}
     </div>

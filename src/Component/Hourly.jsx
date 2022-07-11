@@ -1,45 +1,49 @@
 import React from "react";
 import {
   ResponsiveContainer,
-  LineChart,
-  Line,
+  AreaChart,
   XAxis,
-  YAxis,
   CartesianGrid,
   Legend,
   Tooltip,
+  Area,
 } from "recharts";
 
-const Hourly = ({items }) => {
+const Hourly = ({ items }) => {
   const chartData = items.map((el) => {
     return el;
   });
 
   return (
     <div style={{ textAlign: "left" }}>
-      {/* <p style={{fontWeight:"bold"}}>Hourly Chart</p>  */}
       <div
-        style={{ overflowX: "auto", overflowY: "hidden", textAlign: "left" }}
+        style={{ overflowX: "auto", overflowY: "hidden", textAlign: "left",height:'320px' }}
       >
-        <ResponsiveContainer width="150%" aspect={3}>
-          <LineChart
+        <ResponsiveContainer width="100%" aspect="1.2">
+          <AreaChart
             data={chartData}
             width={500}
             height={300}
             margin={{ top: 10, right: 30, left: 5, bottom: 5 }}
           >
-            <XAxis dataKey="title" />
-            <YAxis dataKey="temp" tickFormatter={(value) => value + "°C"} />
+            <defs>
+              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#0D47A1" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#0D47A1" stopOpacity={0.2} />
+              </linearGradient>
+            </defs>
+            <CartesianGrid strokeDasharray="2" />
+            <XAxis dataKey="title" interval={"preserveStartEnd"} />
+
             <Tooltip />
             <Legend />
-            <CartesianGrid strokeDasharray="4 4" />
-            <Line
+            <Area
               type="monotone"
               dataKey="temp"
               stroke="blue"
               activeDot={{ r: 8 }}
             />
-          </LineChart>
+          </AreaChart>
         </ResponsiveContainer>
       </div>
     </div>
