@@ -25,52 +25,53 @@ const Temperature = ({
   return (
     <div>
       <div>
-        <p>{details}</p>
+        <p style={{color:"steelblue", fontWeight:'bolder'}} >{details}</p>
       </div>
       <div className="temprature">
         <img src={iconUrlFromCode(icon)} alt="" />
-        <p>{`${Math.floor(temp)}°C`}</p>
+        <p style={{fontSize:"30px",fontWeight:"bold"}}>{`${Math.floor(temp)}°C`}</p>
         <div style={{ textAlign: "left" }}>
           <div>
-            <FaTemperatureLow />
-            Real feal : <span>{`${feels_like}°`}</span>
+            <FaTemperatureLow color="red" />
+            Real feal : <span>{`${feels_like}°C`}</span>
           </div>
           <div>
-            <WiHumidity />
-            Humidity : <span>{`${humidity}°`}</span>
+            <WiHumidity color="blue" size={20} style={{margin:" 2px 2px 0px -4px"}} />
+            Humidity : <span>{`${humidity}%`}</span>
           </div>
           <div>
-            <BiWind />
+            <BiWind color="yellow" />
             Wind : <span>{`${speed}km/h`}</span>
           </div>
         </div>
       </div>
-
+   
       <div className="sunset">
-        <FiSunrise />
+        <FiSunrise color="yellow" size={30} />
         <p>
           Rise : <span>{formatToLocalTime(sunrise, timezone, "hh:mm a")}</span>
         </p>
         <p style={{ marginLeft: "10px" }}> | </p>
 
-        <FiSunset style={{ marginLeft: "10px" }} />
+        <FiSunset color="#9E4F02" size={30} style={{ marginLeft: "10px" }} />
         <p>
           {" "}
           Set : <span>{formatToLocalTime(sunset, timezone, "hh:mm a")}</span>
         </p>
         <p style={{ marginLeft: "10px" }}>|</p>
 
-        <AiOutlineArrowUp style={{ marginLeft: "10px" }} />
+        <AiOutlineArrowUp color="#E11212" size={30} style={{ marginLeft: "10px" }} />
         <p>
-          High : <span>{`${Math.floor(temp_max)}°`}</span>
+          High : <span>{`${Math.floor(temp_max)}°C`}</span>
         </p>
         <p style={{ marginLeft: "10px" }}>|</p>
 
-        <AiOutlineArrowDown style={{ marginLeft: "10px" }} />
+        <AiOutlineArrowDown color="#12D757" size={30} style={{ marginLeft: "10px" }} />
         <p>
-          Low : <span>{`${Math.floor(temp_min)}°`}</span>
+          Low : <span>{`${Math.floor(temp_min)}°C`}</span>
         </p>
       </div>
+      <hr />
     </div>
   );
 };

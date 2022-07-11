@@ -43,10 +43,9 @@ const Home = () => {
   return (
     <div className="container">
       <div className="search">
-        <div>
+        <div  onClick={handleLocationClick}>
           <AiTwotoneEnvironment
-            className="location"
-            onClick={handleLocationClick}
+            className="location" 
           />
         </div>
         <div>
@@ -56,6 +55,7 @@ const Home = () => {
               fontSize: "20px",
               width: "full",
               height: "100%",
+              background:'rgb(162, 225, 249)',
             }}
             type="text"
             placeholder="Search your city"
@@ -63,8 +63,8 @@ const Home = () => {
             onChange={(e) => setCity(e.currentTarget.value)}
           />
         </div>
-        <div>
-          <BsSearch onClick={handleSearchClick} />
+        <div onClick={handleSearchClick}>
+          <BsSearch className="search_icon"/>
         </div>
       </div>
       {weather && (

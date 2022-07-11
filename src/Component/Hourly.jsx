@@ -17,8 +17,7 @@ const Hourly = ({ items }) => {
 
   return (
     <div style={{ textAlign: "left" }}>
-      <p>Hourly Chart</p>
-      <hr />
+      <p style={{fontWeight:"bold"}}>Hourly Chart</p> 
       <div
         style={{ overflowX: "auto", overflowY: "hidden", textAlign: "left" }}
       >
@@ -43,6 +42,7 @@ const Hourly = ({ items }) => {
           </LineChart>
         </ResponsiveContainer>
       </div>
+      <hr />
     </div>
   );
 };
