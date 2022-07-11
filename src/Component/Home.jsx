@@ -1,77 +1,82 @@
-import React, { useEffect, useState } from 'react'
-import './style/Home.css'
+import React, { useEffect, useState } from "react";
+import "./style/Home.css";
 import { BsSearch } from "react-icons/bs";
 import { AiTwotoneEnvironment } from "react-icons/ai";
-import TimeAndLocation from './TimeAndLocation';
-import Temperature from './Temperature';
-import Forecast from './Forecast';
-import getFormattedWeatherData from './script'
-import Hourly from './Hourly';
-
+import TimeAndLocation from "./TimeAndLocation";
+import Temperature from "./Temperature";
+import Forecast from "./Forecast";
+import getFormattedWeatherData from "./script";
+import Hourly from "./Hourly";
 
 const Home = () => {
+  const [query, setQuery] = useState({ q: "seoni" });
+  const [units, setUnits] = useState("metric");
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState(null);
 
-    const [query, setQuery] = useState({q:"seoni"})
-    const [units, setUnits] = useState('metric')
-    const [city, setCity] =useState('')
-    const [weather, setWeather] = useState(null)
+  useEffect(() => {
+    const fetchData = async () => {
+      await getFormattedWeatherData({ ...query, units }).then((data) => {
+        setWeather(data);
+      });
+    };
+    fetchData();
+  }, [query, units]);
 
-    useEffect(()=>{ 
-        const fetchData = async () =>{
-           await getFormattedWeatherData({...query, units})
-           .then((data) =>{
-            setWeather(data)
-           }) 
-        }
-        fetchData()
-    },[query, units])
-
-    const handleSearchClick =()=>{
-        if(city !== '') {
-            setQuery({q: city})
-        }
+  const handleSearchClick = () => {
+    if (city !== "") {
+      setQuery({ q: city });
     }
+  };
 
-    const handleLocationClick=()=>{
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition((position)=>{
-                let lat = position.coords.latitude;
-                let lon = position.coords.longitude
-                setQuery({lat,lon})
-            })
-        }
+  const handleLocationClick = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        setQuery({ lat, lon });
+      });
     }
+  };
 
-//    console.log(weather)
+  //    console.log(weather)
   return (
-    <div className='container'>
-        <div className='search'>
-            <div>
-                <AiTwotoneEnvironment className='location' onClick={handleLocationClick} />
-            </div>
-            <div>
-                <input style={{border:"none", fontSize:"20px", width:"full", height:"100%"}} 
-                type="text"
-                placeholder='Search your city'
-                value={city}
-                onChange={(e)=> setCity(e.currentTarget.value)}
-                />
-                
-            </div>
-            <div>
-                <BsSearch onClick={handleSearchClick}/>
-            </div> 
+    <div className="container">
+      <div className="search">
+        <div>
+          <AiTwotoneEnvironment
+            className="location"
+            onClick={handleLocationClick}
+          />
         </div>
-        {weather && (
-            <div>
-                <TimeAndLocation weather={weather}/>
-                <Temperature weather={weather}/>
-                <Hourly items={weather.hourly} /> 
-                <Forecast title="DAILY FORECAST" items={weather.daily} />
-            </div>
-        )}
+        <div>
+          <input
+            style={{
+              border: "none",
+              fontSize: "20px",
+              width: "full",
+              height: "100%",
+            }}
+            type="text"
+            placeholder="Search your city"
+            value={city}
+            onChange={(e) => setCity(e.currentTarget.value)}
+          />
+        </div>
+        <div>
+          <BsSearch onClick={handleSearchClick} />
+        </div>
+      </div>
+      {weather && (
+        <div>
+          <TimeAndLocation weather={weather} />
+          <Temperature weather={weather} />
+          <Hourly items={weather.hourly} />
+          <Forecast title="DAILY FORECAST" items={weather.daily} />
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
