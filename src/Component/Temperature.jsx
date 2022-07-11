@@ -6,6 +6,7 @@ import { BiWind } from "react-icons/bi";
 import { FiSunrise, FiSunset } from "react-icons/fi";
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 import { formatToLocalTime, iconUrlFromCode } from "./script";
+import Hourly from "./Hourly";
 
 const Temperature = ({
   weather: {
@@ -20,7 +21,7 @@ const Temperature = ({
     humidity,
     feels_like,
     timezone,
-  },
+  },items
 }) => {
   return (
     <div>
@@ -40,38 +41,31 @@ const Temperature = ({
             Humidity : <span>{`${humidity}%`}</span>
           </div>
           <div>
-            <BiWind color="yellow" />
+            <BiWind color="#6DE5F7" />
             Wind : <span>{`${speed}km/h`}</span>
           </div>
         </div>
       </div>
-   
+
+      <Hourly items ={items} />
+
+      <br /> 
+
       <div className="sunset">
-        <FiSunrise color="yellow" size={30} />
+        <FiSunrise color="#EC6E4C" size={30} />
         <p>
-          Rise : <span>{formatToLocalTime(sunrise, timezone, "hh:mm a")}</span>
+          Sunrise : <span>{formatToLocalTime(sunrise, timezone, "hh:mm a")}</span>
         </p>
         <p style={{ marginLeft: "10px" }}> | </p>
 
         <FiSunset color="#9E4F02" size={30} style={{ marginLeft: "10px" }} />
         <p>
           {" "}
-          Set : <span>{formatToLocalTime(sunset, timezone, "hh:mm a")}</span>
-        </p>
-        <p style={{ marginLeft: "10px" }}>|</p>
-
-        <AiOutlineArrowUp color="#E11212" size={30} style={{ marginLeft: "10px" }} />
-        <p>
-          High : <span>{`${Math.floor(temp_max)}°C`}</span>
-        </p>
-        <p style={{ marginLeft: "10px" }}>|</p>
-
-        <AiOutlineArrowDown color="#12D757" size={30} style={{ marginLeft: "10px" }} />
-        <p>
-          Low : <span>{`${Math.floor(temp_min)}°C`}</span>
-        </p>
+          Sunset : <span>{formatToLocalTime(sunset, timezone, "hh:mm a")}</span>
+        </p> 
       </div>
-      <hr />
+      <br />
+      <br />
     </div>
   );
 };

@@ -2,10 +2,12 @@ import React from "react";
 import { iconUrlFromCode } from "./script";
 
 const Forecast = ({ title, items }) => { 
+   
   return (
     <div>
+        <br />
       <div style={{ display: "flex" }}>
-        <p style={{fontWeight:"bold"}}>{title}</p>
+        {/* <p style={{fontWeight:"bold"}}>{title}</p> */}
       </div> 
       <div
         style={{
@@ -25,11 +27,13 @@ const Forecast = ({ title, items }) => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
+             
               }}
             >
               <p>{item.title}</p>
-              <img src={iconUrlFromCode(item.icon)} alt="" />
               <p>{`${Math.floor(item.temp)}°C`}</p>
+              <img src={iconUrlFromCode(item.icon)} alt="" />
+              <p>{item.details}</p>
             </div>
           );
         })}

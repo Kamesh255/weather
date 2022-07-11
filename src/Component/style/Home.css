@@ -2,12 +2,12 @@
     padding: 10px; 
     max-width: 800px;
     margin: auto;
-    background:rgb(182, 231, 251); 
-    font-weight: 500;
+    background:#FFFFFF; 
+    font-weight: 600;
 }
 .search{ 
     width: 100%;
-    border : 2px solid gray;
+    /* border : 2px solid gray; */
     border-radius: 5px;
     height: 50px;
     display: grid;
@@ -16,6 +16,8 @@
     padding: 2px;
     align-items: center;
     justify-content: space-around;
+    box-shadow: rgb(204, 203, 203) 1px 2px 3px 1px;
+
 }
 .search>div{ 
     width: 100%;
@@ -29,4 +31,9 @@
 }
 .search_icon:hover{
     font-size: 25px;
+}
+.timeAndGraf{
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: rgb(204, 203, 203) 1px 2px 3px 1px;
 }

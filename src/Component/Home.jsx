@@ -54,8 +54,7 @@ const Home = () => {
               border: "none",
               fontSize: "20px",
               width: "full",
-              height: "100%",
-              background:'rgb(182, 231, 251)',
+              height: "100%", 
             }}
             type="text"
             placeholder="Search your city"
@@ -65,13 +64,15 @@ const Home = () => {
         </div>
         <div onClick={handleSearchClick}>
           <BsSearch className="search_icon"/>
-        </div>
+        </div> 
       </div>
+      <br />
       {weather && (
         <div>
-          <TimeAndLocation weather={weather} />
-          <Temperature weather={weather} />
-          <Hourly items={weather.hourly} />
+            <div className="timeAndGraf"> 
+                <TimeAndLocation weather={weather} />
+                <Temperature weather={weather} items={weather.hourly}/> 
+            </div>
           <Forecast title="DAILY FORECAST" items={weather.daily} />
         </div>
       )}

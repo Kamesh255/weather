@@ -10,14 +10,14 @@ import {
   Tooltip,
 } from "recharts";
 
-const Hourly = ({ items }) => {
+const Hourly = ({items }) => {
   const chartData = items.map((el) => {
     return el;
   });
 
   return (
     <div style={{ textAlign: "left" }}>
-      <p style={{fontWeight:"bold"}}>Hourly Chart</p> 
+      {/* <p style={{fontWeight:"bold"}}>Hourly Chart</p>  */}
       <div
         style={{ overflowX: "auto", overflowY: "hidden", textAlign: "left" }}
       >
@@ -42,7 +42,6 @@ const Hourly = ({ items }) => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <hr />
     </div>
   );
 };
