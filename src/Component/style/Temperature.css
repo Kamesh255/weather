@@ -1,7 +1,8 @@
-.temprature{
-    display: flex;
+.temprature{ 
+    display: grid;
+    grid-template-columns: 30% 30% 40%;
     align-items: center;
-    justify-content:space-between
+    justify-content: center; 
 }
 .sunset{
     display: flex;
