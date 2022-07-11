@@ -7,6 +7,7 @@ const TimeAndLocation = ({ weather: { dt, timezone, name, country } }) => {
       <div>
         <p style={{fontSize:"35px",fontWeight:"bold"}}>{`${name},${country}`}</p>
       </div>
+      <br />
       <div>
         <p style={{fontWeight:450}}>{formatToLocalTime(dt, timezone)}</p>
       </div>
