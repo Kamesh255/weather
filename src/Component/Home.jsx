@@ -6,6 +6,7 @@ import TimeAndLocation from './TimeAndLocation';
 import Temperature from './Temperature';
 import Forecast from './Forecast';
 import getFormattedWeatherData from './script'
+import Hourly from './Hourly';
 
 
 const Home = () => {
@@ -41,7 +42,7 @@ const Home = () => {
         }
     }
 
-   console.log(weather)
+//    console.log(weather)
   return (
     <div className='container'>
         <div className='search'>
@@ -65,7 +66,7 @@ const Home = () => {
             <div>
                 <TimeAndLocation weather={weather}/>
                 <Temperature weather={weather}/>
-                <Forecast title="HOURLY FORECAST" items={weather.hourly} />
+                <Hourly items={weather.hourly} /> 
                 <Forecast title="DAILY FORECAST" items={weather.daily} />
             </div>
         )}

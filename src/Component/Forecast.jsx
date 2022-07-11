@@ -8,7 +8,7 @@ const Forecast = ({title, items}) => {
             <p>{title}</p>
         </div>
         <hr />
-        <div style={{display:"flex", alignItems:"center",justifyContent:"center",overflowX:'auto'}}>
+        <div style={{display:"flex", alignItems:"center",justifyContent:"center",overflowX:'auto',overflowY:"hidden",margin:"5px 10px 5px 10px"}}>
             {items.map((item) =>{ 
                 return(  
                     <div  style={{display:"flex", flexDirection:"column" ,alignItems:"center",justifyContent:"center"}}>
