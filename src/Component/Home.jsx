@@ -9,7 +9,7 @@ import getFormattedWeatherData from "./script";
 import Hourly from "./Hourly";
 
 const Home = () => {
-  const [query, setQuery] = useState({ q: "seoni" });
+  const [query, setQuery] = useState({ q: "indore" });
   const [units, setUnits] = useState("metric");
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
