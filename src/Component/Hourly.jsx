@@ -17,24 +17,17 @@ const Hourly = ({ items }) => {
   return (
     <div style={{ textAlign: "left" }}>
       <div
-        style={{ overflowX: "auto", overflowY: "hidden", textAlign: "left",height:'320px' }}
+        style={{ overflowX: "auto", overflowY: "hidden", textAlign: "left",height:'350px' }}
       >
-        <ResponsiveContainer width="100%" aspect="1.2">
+        <ResponsiveContainer width="100%" aspect="auto">
           <AreaChart
             data={chartData}
             width={500}
             height={300}
-            margin={{ top: 10, right: 30, left: 5, bottom: 5 }}
-          >
-            <defs>
-              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#0D47A1" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#0D47A1" stopOpacity={0.2} />
-              </linearGradient>
-            </defs>
+            margin={{ top: 10, right: 30, left: 5, bottom: 30 }}
+          > 
             <CartesianGrid strokeDasharray="2" />
-            <XAxis dataKey="title" interval={"preserveStartEnd"} />
-
+            <XAxis dataKey="title" interval={"preserveStartEnd"} /> 
             <Tooltip />
             <Legend />
             <Area

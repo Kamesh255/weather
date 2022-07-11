@@ -38,24 +38,8 @@ const Temperature = ({
 
       </div> 
 
-      <Hourly items ={items} />  
+      <Hourly items ={items} />   
 
-      <br />  
-
-      <div className="sunset">
-        <FiSunrise color="#EC6E4C" size={30} />
-        <p>
-          Sunrise : <span>{formatToLocalTime(sunrise, timezone, "hh:mm a")}</span>
-        </p>
-        <p style={{ marginLeft: "10px" }}> | </p>
-
-        <FiSunset color="#9E4F02" size={30} style={{ marginLeft: "10px" }} />
-        <p>
-          {" "}
-          Sunset : <span>{formatToLocalTime(sunset, timezone, "hh:mm a")}</span>
-        </p> 
-      </div>
-      <br />
        <div style={{display:'flex',flexDirection:'row',flexWrap:'wrap',gap:'15px',alignItems:'center',justifyContent:'space-between',padding:'5px'}}>
           <div> 
             <FaTemperatureLow color="red" />
@@ -69,6 +53,20 @@ const Temperature = ({
             <BiWind color="#6DE5F7" />
             Wind : <span>{`${speed}km/h`}</span>
           </div>
+      </div>
+      <br />
+      <div className="sunset">
+        <FiSunrise color="#EC6E4C" size={30} />
+        <p>
+          Sunrise : <span>{formatToLocalTime(sunrise, timezone, "hh:mm a")}</span>
+        </p>
+        <p style={{ marginLeft: "10px" }}> | </p>
+
+        <FiSunset color="#9E4F02" size={30} style={{ marginLeft: "10px" }} />
+        <p>
+          {" "}
+          Sunset : <span>{formatToLocalTime(sunset, timezone, "hh:mm a")}</span>
+        </p> 
       </div>
       <br />
     </div>
