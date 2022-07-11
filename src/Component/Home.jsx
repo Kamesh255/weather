@@ -55,7 +55,7 @@ const Home = () => {
               fontSize: "20px",
               width: "full",
               height: "100%",
-              background:'rgb(162, 225, 249)',
+              background:'rgb(182, 231, 251)',
             }}
             type="text"
             placeholder="Search your city"
