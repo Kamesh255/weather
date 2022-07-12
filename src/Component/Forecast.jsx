@@ -24,7 +24,7 @@ const Forecast = ({ title, items }) => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                background:'#EDF9F8',
+                background:'#F3FBFF',
                 borderRadius:'5px', 
                 padding:'10px'
                

@@ -40,34 +40,41 @@ const Temperature = ({
 
       <Hourly items ={items} />   
 
-       <div style={{display:'flex',flexDirection:'row',flexWrap:'wrap',gap:'15px',alignItems:'center',justifyContent:'space-between',padding:'5px'}}>
-          <div> 
+       <div style={{display:'flex',flexDirection:'row',flexWrap:'wrap',gap:'15px',alignItems:'center',justifyContent:'space-between',padding:'5px',margin:'0 5px 0 5px'}}>
+          <div style={{width:'fit-content',padding:"10px",borderRadius:'5px',backgroundColor:'#F3FBFF'}}> 
             <FaTemperatureLow color="red" />
             Real feal : <span>{`${feels_like}°C`}</span>
           </div>
-          <div>
+          <div style={{width:'fit-content',padding:"10px",borderRadius:'5px',backgroundColor:'#F3FBFF'}}>
             <WiHumidity color="blue"  />
             Humidity : <span>{`${humidity}%`}</span>
           </div>
-          <div>
+          {/* <div style={{width:'fit-content', backgroundColor:'EDF9F8'}}>
             <BiWind color="#6DE5F7" />
             Wind : <span>{`${speed}km/h`}</span>
-          </div>
+          </div> */}
       </div>
       <br />
       <div className="sunset">
+        <div> 
         <FiSunrise color="#EC6E4C" size={30} />
         <p>
-          Sunrise : <span>{formatToLocalTime(sunrise, timezone, "hh:mm a")}</span>
+          Sunrise <br /><span>{formatToLocalTime(sunrise, timezone, "hh:mm a")}</span>
         </p>
-        <p style={{ marginLeft: "10px" }}> | </p>
+        </div>
 
+        <div> 
         <FiSunset color="#9E4F02" size={30} style={{ marginLeft: "10px" }} />
-        <p>
-          {" "}
-          Sunset : <span>{formatToLocalTime(sunset, timezone, "hh:mm a")}</span>
+        <p> 
+          Sunset <br /><span>{formatToLocalTime(sunset, timezone, "hh:mm a")}</span>
         </p> 
+        </div>
       </div>
+        <img style={{width:'90%',margin:'auto '}} src="rise-set.png" alt="" />
+        <div style={{display:'flex', alignItems:'center',justifyContent:'space-between', margin:'0 15px 0 15px'}}> 
+          <p>{formatToLocalTime(sunrise, timezone, "hh:mm a")}</p> 
+          <p>{formatToLocalTime(sunset, timezone, "hh:mm a")}</p>
+        </div>
       <br />
     </div>
   );
