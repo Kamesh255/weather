@@ -24,6 +24,7 @@ const Home = () => {
   const handleSearchClick = () => {
     if (city !== "") {
       setQuery({ q: city });
+      setCity('')
     }
   };
 
